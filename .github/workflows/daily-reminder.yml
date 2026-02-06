@@ -1,0 +1,23 @@
+name: Daily EasyHR Check-in Reminder
+
+on:
+  schedule:
+    # Runs at 10:30 AM IST (5:00 AM UTC) on weekdays
+    - cron: '0 5 * * 1-5'
+  workflow_dispatch: # Allows manual trigger for testing
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create reminder notification
+        run: |
+          echo "🔔 EasyHR Check-in Reminder"
+          echo "Time to check in to EasyHR!"
+          echo ""
+          echo "Click the link below to start your check-in:"
+          echo "https://perplexity.ai (Open and say 'Do my EasyHR check-in')"
+          
+      - name: Send notification via GitHub
+        run: |
+          echo "::notice title=EasyHR Check-in Reminder::It's 10:30 AM - Time to check in to EasyHR! Open your chat and say 'Do my EasyHR check-in'"
